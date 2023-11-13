@@ -154,7 +154,7 @@ data = {
             "Univ_rollno": 2100301530026,
             "Degree": "B.Tech",
             "Department": "AIML",
-            "Mobile": 94729076880,
+            "Mobile": 9472907880,
             "Extras": 0,
             "Lecture_number": [1,2,3,4,5,6,7,8],
             "Last_attendance_time": "2022-12-11 00:54:34",
