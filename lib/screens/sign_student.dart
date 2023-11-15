@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:smart_attendance_system/screens/login.dart';
+import 'package:smart_attendance_system/screens/login_student.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:developer';
 import 'package:fluttertoast/fluttertoast.dart';
 
 
-class SignScreen extends StatefulWidget {
-  SignScreen({super.key});
+
+class SignStudentScreen extends StatefulWidget {
+  SignStudentScreen({super.key});
   @override
-  SignScreenState createState() => SignScreenState();
+  SignStudentScreenState createState() => SignStudentScreenState();
 }
 
-class SignScreenState extends State<SignScreen> {
+class SignStudentScreenState extends State<SignStudentScreen> {
   FocusNode myfocus = FocusNode();
   final formKey = GlobalKey<FormState>();
   TextEditingController nameController = TextEditingController();
   final passwordFocusNode = FocusNode();
   TextEditingController emailController = TextEditingController();
+
   final emailFocusNode = FocusNode();
   TextEditingController passwordController = TextEditingController();
   final nameFocusNode = FocusNode();
   var isObscured;
-
   String extractUsernameFromEmail(String email) {
     List<String> parts = email.split('@');
     if (parts.length == 2) {
@@ -31,6 +32,10 @@ class SignScreenState extends State<SignScreen> {
       throw FormatException('Invalid email format');
     }
   }
+
+
+
+
 
   void createAccount() async {
     String email = emailController.text.trim();
@@ -205,7 +210,7 @@ class SignScreenState extends State<SignScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginScreen()),
+                                builder: (context) => LoginStudentScreen()),
                           );
                         },
                         child: Text('Register',
