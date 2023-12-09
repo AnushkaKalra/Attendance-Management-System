@@ -1,3 +1,4 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_attendance_system/screens/home_student.dart';
 import 'package:smart_attendance_system/screens/home_teacher.dart';
@@ -10,12 +11,15 @@ import 'dart:developer';
 import 'auth_service.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'screens/select.dart';
+import 'package:get/get.dart';
 
 
 late SharedPreferences prefs;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  final cameras=await availableCameras();
+  final firstCamera=cameras.first;
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -33,7 +37,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String? start=prefs.getString('logged in');
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
 

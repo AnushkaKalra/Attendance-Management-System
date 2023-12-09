@@ -6,7 +6,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:developer';
 import 'package:smart_attendance_system/screens/register.dart';
 import 'package:smart_attendance_system/screens/profile_teacher.dart';
-
+import 'package:smart_attendance_system/screens/mark_attendance.dart';
 
 class HomeTeacherScreen extends StatefulWidget {
   HomeTeacherScreen({super.key});
@@ -61,17 +61,17 @@ class HomeTeacherScreenState extends State<HomeTeacherScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1D1E33),
+      backgroundColor: Color.fromRGBO(31, 116, 206, 2),
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromRGBO(18,22,108,2),
         automaticallyImplyLeading: false,
-        title: Text('Home'),
+        title: Center(child: Text('Home',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 25),)),
         actions: [
           IconButton(
             onPressed: () {
               logout();
             },
-            icon: Icon(Icons.exit_to_app),
+            icon: Icon(Icons.exit_to_app,color:Colors.white),
           ),
         ],
       ),
@@ -176,28 +176,36 @@ class HomeTeacherScreenState extends State<HomeTeacherScreen> {
                   ),
                   Padding(
                     padding: EdgeInsets.only(top: 10.0),
-                    child: Column(
-                      children: [
-                        Icon(
-                          Icons.edit_calendar,
-                          size: 70,
-                          color: Colors.white,
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              'Mark',
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.white),
-                            ),
-                            Text(
-                              'Attendance',
-                              style:
-                                  TextStyle(fontSize: 20, color: Colors.white),
-                            ),
-                          ],
-                        ),
-                      ],
+                    child: GestureDetector(
+                      onTap: (){
+                        Navigator.pushReplacement(context,
+                        MaterialPageRoute(builder: (context){
+                          return MarkAttendanceScreen();
+                            },),);
+                      },
+                      child: Column(
+                        children: [
+                          Icon(
+                            Icons.edit_calendar,
+                            size: 70,
+                            color: Colors.white,
+                          ),
+                          Column(
+                            children: [
+                              Text(
+                                'Mark',
+                                style:
+                                    TextStyle(fontSize: 20, color: Colors.white),
+                              ),
+                              Text(
+                                'Attendance',
+                                style:
+                                    TextStyle(fontSize: 20, color: Colors.white),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],

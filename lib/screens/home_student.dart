@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smart_attendance_system/screens/login_student.dart';
 import 'dart:developer';
@@ -13,9 +14,11 @@ class HomeStudentScreen extends StatefulWidget {
 }
 
 class HomeStudentScreenState extends State<HomeStudentScreen> {
+  List<String> items=['DAA','DS','COA','CD','OS','DBMS','TAFL'];
+  String? selectedItem='DAA';
   String email = "";
   String username = "";
-  String total = "";
+  RxString total = "".obs;
   String extractUsernameFromEmail(String email) {
     List<String> parts = email.split('@');
     if (parts.length == 2) {
@@ -29,14 +32,14 @@ class HomeStudentScreenState extends State<HomeStudentScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     email = (prefs.getString('username') ?? "");
     username = extractUsernameFromEmail(email);
-    total = await FirebaseFirestore.instance
+    total.value = await FirebaseFirestore.instance
         .collection('students')
         .doc("$username ipec")
         .get()
         .then((value) {
       return value.get('Name');
     });
-    log(total);
+    log(total.value);
   }
 
   void logout() async {
@@ -57,9 +60,9 @@ class HomeStudentScreenState extends State<HomeStudentScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF1D1E33),
+      backgroundColor: Color.fromRGBO(31, 116, 206, 2),
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromRGBO(18,22,108,2),
         automaticallyImplyLeading: false,
         title: Text('Dashboard'),
         actions: [
@@ -83,16 +86,17 @@ class HomeStudentScreenState extends State<HomeStudentScreen> {
                       fontWeight: FontWeight.bold,
                       color: Colors.white)),
             ),
-                  Container(
+                  Obx(()=> Container(
                     alignment: Alignment.topLeft,
                     child: Text(
-                      total,
+                      total.value,
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 40,
                           color: Colors.white),
                     ),
-                  ),
+                  )),
+
 
             SizedBox(
               height: 120,
