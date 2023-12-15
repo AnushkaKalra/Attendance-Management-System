@@ -3,70 +3,80 @@ import 'package:camera/camera.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
-class CameraScreen extends StatefulWidget{
+class CameraScreen extends StatefulWidget {
   @override
-  CameraScreenState createState()=>CameraScreenState();
+  CameraScreenState createState() => CameraScreenState();
 }
 
-class CameraScreenState extends State<CameraScreen>{
+class CameraScreenState extends State<CameraScreen> {
   late CameraController controller;
   late Future<void> initializeControllerFuture;
   @override
-  void initState(){
-    controller=CameraController(CameraDescription(sensorOrientation: 1,name:'0',lensDirection: CameraLensDirection.back), ResolutionPreset.medium,);
-    initializeControllerFuture=controller.initialize();
+  void initState() {
     super.initState();
+
+    controller = CameraController(
+      CameraDescription(
+          sensorOrientation: 1,
+          name: '0',
+          lensDirection: CameraLensDirection.back),
+      ResolutionPreset.veryHigh,
+    );
+    initializeControllerFuture = controller.initialize();
   }
 
   @override
-  void dispose(){
+  void dispose() {
     controller.dispose();
     super.dispose();
   }
-  Widget build(BuildContext context){
+
+  Widget build(BuildContext context) {
     return Scaffold(
-      body:FutureBuilder<void>(builder: ((context,snapshot) {
+      body: AspectRatio(
+        aspectRatio: 0.5,
+      child: FutureBuilder<void>(builder: ((context,snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           return CameraPreview(controller);
         } else {
           return Center(child: CircularProgressIndicator());
         }
-      }), future: initializeControllerFuture,),
+      }), future: initializeControllerFuture,),),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.white,
         child:Icon(
           Icons.camera_alt,
-            color:Colors.black,
+          color: Colors.black,
         ),
-        onPressed: ()async {
-          try{
-            final image=await controller.takePicture();
-            Navigator.of(context).push(MaterialPageRoute(builder: (context)=>PreviewScreen(imagePath: image.path),
+        onPressed: () async {
+          try {
+            final image = await controller.takePicture();
+            Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => PreviewScreen(imagePath: image.path),
             ));
-          }
-catch(e){}
+          } catch (e) {}
         },
       ),
     );
   }
 }
 
-class PreviewScreen extends StatelessWidget{
+class PreviewScreen extends StatelessWidget {
   final String imagePath;
 
-  const PreviewScreen({Key? key,required this.imagePath}):super(key:key);
+  const PreviewScreen({Key? key, required this.imagePath}) : super(key: key);
 
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:Text('Preview'),
-      ),
-      body:Center(
-        child:Image.file(
-           File(imagePath),
+        appBar: AppBar(
+          title: Text('Preview'),
         ),
-      )
-    );
+        body: Center(
+          child: Image.file(
+            File(imagePath),
+            fit: BoxFit.cover,
+          ),
+        ));
   }
 }

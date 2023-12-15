@@ -34,9 +34,6 @@ class SignStudentScreenState extends State<SignStudentScreen> {
   }
 
 
-
-
-
   void createAccount() async {
     String email = emailController.text.trim();
     String name = nameController.text.trim();

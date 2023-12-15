@@ -7,6 +7,8 @@ import 'dart:developer';
 import 'package:smart_attendance_system/screens/register.dart';
 import 'package:smart_attendance_system/screens/profile_teacher.dart';
 import 'package:smart_attendance_system/screens/mark_attendance.dart';
+import 'package:get/get.dart';
+
 
 class HomeTeacherScreen extends StatefulWidget {
   HomeTeacherScreen({super.key});
@@ -17,7 +19,8 @@ class HomeTeacherScreen extends StatefulWidget {
 class HomeTeacherScreenState extends State<HomeTeacherScreen> {
   String email = "";
   String username = "";
-  String total = "";
+  RxString total = "".obs;
+
   String extractUsernameFromEmail(String email) {
     List<String> parts = email.split('@');
     if (parts.length == 2) {
@@ -31,14 +34,16 @@ class HomeTeacherScreenState extends State<HomeTeacherScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     email = (prefs.getString('username') ?? "");
     username = extractUsernameFromEmail(email);
-    total = await FirebaseFirestore.instance
+    await prefs.setString("usernameM", username);
+
+    total.value = await FirebaseFirestore.instance
         .collection('teachers')
         .doc("$username ipec")
         .get()
         .then((value) {
       return value.get('Name');
     });
-    log(total);
+    log(total.value);
   }
 
   void logout() async {
@@ -87,16 +92,16 @@ class HomeTeacherScreenState extends State<HomeTeacherScreen> {
                       fontWeight: FontWeight.bold,
                       color: Colors.white)),
             ),
-            Container(
+            Obx(()=>Container(
               alignment: Alignment.topLeft,
               child: Text(
-                total,
+                total.value,
                 style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 40,
                     color: Colors.white),
               ),
-            ),
+            ),),
             SizedBox(
               height: 120,
             ),

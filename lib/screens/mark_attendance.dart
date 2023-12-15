@@ -6,6 +6,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:date_format/date_format.dart';
 import 'package:intl/intl.dart';
 import 'package:smart_attendance_system/screens/camera_screen.dart';
+import 'package:get/get.dart';
+import 'dart:developer';
+
 
 class MarkAttendanceScreen extends StatefulWidget {
   MarkAttendanceScreen({super.key});
@@ -14,33 +17,37 @@ class MarkAttendanceScreen extends StatefulWidget {
 }
 
 class MarkAttendanceScreenState extends State<MarkAttendanceScreen> {
+  String username="";
   List<String> items = ['DAA', 'DS', 'COA', 'CD', 'OS', 'DBMS', 'TAFL'];
   String? selectedItem = 'DAA';
   TextEditingController date = TextEditingController();
   FocusNode dateFocusNode = FocusNode();
   TextEditingController subject = TextEditingController();
   FocusNode subjectFocusNode = FocusNode();
+  RxString total = "".obs;
+
   var isObscured;
 
-  // loadUserInfo() async {
-  //   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   email = (prefs.getString('username') ?? "");
-  //   username = extractUsernameFromEmail(email);
-  //   total = await FirebaseFirestore.instance
-  //       .collection('teachers')
-  //       .doc("$username ipec")
-  //       .get()
-  //       .then((value) {
-  //     return value.get('Subject_code');
-  //   });
-  //   log(total);
-  // }
+  loadUserInfo() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    username = (prefs.getString('usernameM') ?? "");
+    log(username);
+    total = await FirebaseFirestore.instance
+        .collection('teachers')
+        .doc("$username ipec")
+        .get()
+        .then((value) {
+      return value.get('Name');
+    });
+    log(total.value);
+  }
 
 
   @override
   void initState() {
     super.initState();
     setState(() {
+      loadUserInfo();
       isObscured = true;
     });
   }
