@@ -1,4 +1,4 @@
-# smart_attendance_system
+# Smart Attendance System
 
 A new Flutter project.
 
