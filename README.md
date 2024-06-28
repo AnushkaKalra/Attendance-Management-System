@@ -67,8 +67,8 @@ For website: `npm start`
 
 ***Common Screens***
 
-|Sign up screen           |  Role selection screen                   | 
-|:-------------------------:|:-------------------------:
+|Sign up screen | Role selection screen | 
+|:-------------:|:---------------------:|
 ![Sign up](https://github.com/AnushkaKalra/Attendance-Management-System/blob/main/Screenshots/Mobile%20app/Sign%20Up.jpg) | ![Role selection screen](https://github.com/AnushkaKalra/Attendance-Management-System/blob/main/Screenshots/Mobile%20app/Role%20selection.jpg)
 
 ***Student Panel***
@@ -88,7 +88,7 @@ For website: `npm start`
 ![Faculty sign in screen](https://github.com/AnushkaKalra/Attendance-Management-System/blob/main/Screenshots/Mobile%20app/Faculty%20sign%20in.jpg) | ![Faculty dashboard screen](https://github.com/AnushkaKalra/Attendance-Management-System/blob/main/Screenshots/Mobile%20app/Faculty%20dashboard.jpg) | ![Faculty profile screen](https://github.com/AnushkaKalra/Attendance-Management-System/blob/main/Screenshots/Mobile%20app/Faculty%20profile.jpg) | ![Faculty mark attendance screen](https://github.com/AnushkaKalra/Attendance-Management-System/blob/main/Screenshots/Mobile%20app/Mark%20attendance%20portal.jpg) |
 
 |Latest attendance screen           |  View class attendance screen                   | 
-|:-------------------------:|:-------------------------:
+|:-------------------------:|:-------------------------:|
 ![Latest attendance screen](https://github.com/AnushkaKalra/Attendance-Management-System/blob/main/Screenshots/Mobile%20app/Latest%20Attendance%20Screen.jpg) | ![View class attendance screen](https://github.com/AnushkaKalra/Attendance-Management-System/blob/main/Screenshots/Mobile%20app/Attendance%20table.png)
 
 
