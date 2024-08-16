@@ -4,7 +4,7 @@
 ### Introduction
 
 The Smart Attendance System Using Face Recognition is a software
-application that automates attendance-taking using facial recognition technology. The system aims improves accessibility for both students and faculty, increasing accuracy, and streamlining attendance tracking by utilizing Flutter, React, and Amazon Web Services (AWS).
+application that automates attendance-taking using facial recognition technology. The system aims to improve accessibility for both students and faculty, increasing accuracy, and streamlining attendance tracking by utilizing Flutter, React, and Amazon Web Services (AWS).
 
 ### Authors
 
