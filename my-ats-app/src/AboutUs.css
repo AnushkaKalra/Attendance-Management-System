@@ -1,0 +1,127 @@
+/* src/AboutUs.css */
+ .about-us {
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(to bottom right, #cfe1e9, #a3dbf1, #419df3, #a3dbf1, #cee2ea);
+  }
+  
+  .hero-image {
+    position: relative;
+    width: 100%;
+    max-height: 600px;
+    overflow: hidden;
+  }
+  
+  .hero-image img {
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+    height: 390px;
+    aspect-ratio: auto;
+  }
+  .text h1 {
+    color: white;
+    text-shadow: 8px 4px black;
+    padding-top: 0px;
+  }
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .text p{
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: -webkit-match-parent;
+    text-shadow: -1px 3px 2px black;
+  }
+  
+  .vision-mission {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px 20px;
+    text-align: center;
+  }
+  .box {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 5px 10px rgba(0, 0, 0, 0.1);
+    width: 36%;
+    transform: perspective(1000px) rotateY(-1deg);
+  }
+  
+  .vision h2, .mission h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .vision p, .mission p {
+    font-size: 1.2em;
+    color: #555;
+  }
+  
+  .mission ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .mission li {
+    margin-bottom: 10px;
+  }
+  .mission li::marker{
+    font-size: 1.8em;
+    line-height: 0.1;
+    padding: 2px;
+ }
+
+  .footer {
+    background: #333;
+    color: white;
+    padding: 13px;
+    text-align: center;
+    font-size: 15px;
+  }
+  
+  .footer .social-links {
+    margin-bottom: 20px;
+  }
+  
+  .footer .social-links a {
+    color: #ddd;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1.0em;
+  }
+  
+  .footer .social-links a:hover {
+    color: #ddd;
+  }
+  
+  .footer .contact p {
+    margin: 5px 0;
+  }
+  .footer .address-link {
+    color: white;
+    text-decoration: none;
+  }
+  .footer .address-link:hover {
+    color: #ddd;
+    }
+    .footer .contact p {
+      margin: 5px 0;
+    }
+  .section a {
+    text-decoration: none;
+    color:rgba(0, 0, 0);
+  }

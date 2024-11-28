@@ -1,0 +1,10 @@
+[
+  {
+    "groupName": "student",
+    "precedence": 1
+  },
+  {
+    "groupName": "faculty",
+    "precedence": 2
+  }
+]
