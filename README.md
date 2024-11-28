@@ -42,6 +42,8 @@ For mobile app: `cd frontend-app`
 \
 For website: `cd frontend-web`
 
+4. Navigate
+
 4. Install dependencies
 
 For mobile app: `flutter pub get`
