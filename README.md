@@ -42,15 +42,19 @@ For mobile app: `cd frontend-app`
 \
 For website: `cd frontend-web`
 
-4. Navigate
+4. For the website, kindly ensure you are in the directory my-ats-app
 
-4. Install dependencies
+```bash
+  cd my-ats-app
+```
+
+5. Install dependencies
 
 For mobile app: `flutter pub get`
 \
 For website: `npm install`
 
-5. Run the application
+6. Run the application
 
 For mobile app: `flutter run`
 \
